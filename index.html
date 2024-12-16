@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>The Book Haven</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>The Book Haven</h1>
+        </header>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">ACOSTAR Saga</a></li>
+                <li><a href="#">Harry Potter Saga</a></li>
+                <li><a href="#">Percy Jackson Saga</a></li>
+            </ul>
+        </nav>
+
+        <main id="app" class="main-content">
+            <h2>{{ title }}</h2>
+            <section class="card">
+                <div>
+                    <img :src="image" alt="acostar1" class="img-centre" :class="{ 'grayed-out-img': !inStock}">
+                </div>
+                <p id="title_p">{{ product }} </p>
+                <p>{{ description }} </p>
+                <p> To learn more visit <a :href="url" target="_blank">"Sarah J. Maas"</a>, the Official page!</p>
+
+
+                <div class="product-status">
+                    <p v-show="inStock">
+                        The item is available for pickup from our main store or shipped for free to any address!
+                    </p>
+
+                    <p v-if="inventory > 10">We have five volumes in our stock!</p>
+                    <p v-else-if="inventory <=10 && inventory > 0">Hurry up, this item is almost sold out!</p>
+                    <p v-else>Out of Stock</p>
+
+                    <!-- combine two boolean properties -->
+                    <p v-if="inventory>0 && onSale">This item is currently on sale, don't miss your chance!</p>
+
+                    <div @click="addToCart()" class="buttons"><button>Add to the cart</button></div>
+
+                    <!-- Adding a list -->
+                    <h3>Dive into these genres</h3>
+                    <ul>
+                        <li v-for="category in categories">{{ category }}</li>
+                    </ul>
+
+                    <h3>Books in the Series</h3>
+
+
+                    <div v-for="option in options" :key="option.id" class="volume-option" @click="updateBook(option)">
+                        <div class="color-circle" :style="{ backgroundColor: option.color }"></div>
+                        <div class="volume-details">
+                            <p><i>{{ option.title }}</i></p>
+                            <p class="stock">
+                                <span v-if="option.quantity > 0">Stock: {{ option.quantity }}</span>
+                                <span v-else>Out of Stock</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart">
+                    Cart({{ cart }})
+                </div>
+
+                <div class="buttons">
+                    <button @:click="removeFromCart" :class="[cart<=0 ? 'disabled-btn' : '']">
+                        Remove from Cart
+                    </button>
+                </div>
+            </section>
+        </main>
+
+
+        <!-- aside on the right side of main content -->
+        <button id="toggle-aside" class="button-gradient">+</button>
+
+        <aside id="info-aside" class="main-sidebar hidden">
+            <dl>
+                <dt>Accessible:</dt>
+                <dd>Designed to be intuitive, our library is organized to help you easily find books that captivate you, thanks to a simple and user-friendly interface.</dd>
+
+                <dt>Efficient:</dt>
+                <dd>With an optimized search system and personalized recommendations, you can quickly access books that match your tastes and interests.</dd>
+
+                <dt>Versatile:</dt>
+                <dd>Offering a wide range of literary genres, our library caters to all readers, whether they are looking for an engaging novel, an academic work, or a practical guide.</dd>
+            </dl>
+        </aside>
+
+
+
+        <footer>&copy; <span id="year"></span> - Vue.js Tristan - Camille - Loriana</footer>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-aside');
+        const asideBlock = document.getElementById('info-aside');
+
+        toggleButton.addEventListener('click', () => {
+            asideBlock.classList.toggle('visible');
+            toggleButton.textContent = asideBlock.classList.contains('visible') ? '-' : '+';
+        });
+    </script>
+
+
+    <!-- Another script for mounting the app to our HTML DOM -->
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+
+    <body>
+
+</html>

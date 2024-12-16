@@ -1,0 +1,308 @@
+:root {
+    --blue: #7CD2E6;
+    --green: #ABD587;
+    --yellow: #FCE365;
+    --purple: #B874B4;
+    --pink: #FAC9D0;
+    --red: #E16F66;
+    --header-font: 'Century Gothic Pro', sans-serif;
+    --body-font: 'Montserrat Classic', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font), sans-serif;
+    background-color: #fcf8f5;
+    color: #495057;
+    line-height: 1.6;
+}
+
+div.wrapper {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    font-family: var(--header-font);
+    font-size: 1.7em;
+}
+
+h1 {
+    background: linear-gradient(45deg, var(--purple), var(--blue), var(--pink), var(--red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 10px;
+    padding: 10px 0;
+}
+
+nav.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+nav.main-nav a {
+    text-decoration: none;
+    font-family: var(--header-font);
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #495057;
+    position: relative;
+    padding: 5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav.main-nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(45deg, var(--purple), var(--blue), var(--green), var(--yellow), var(--pink), var(--red));
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+nav.main-nav a:hover {
+    color: var(--blue);
+    transform: scale(1.1);
+}
+
+nav.main-nav a:hover::before {
+    width: 100%;
+}
+
+h2 {
+    font-family: var(--header-font);
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    color: #495057;
+    margin: 20px 0;
+    padding: 10px;
+    position: relative;
+    background: linear-gradient(45deg, var(--blue), var(--green), var(--pink), var(--yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--yellow), var(--pink));
+    transform: translateX(-50%);
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+h2:hover::after {
+    width: 100px;
+}
+
+img {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: auto;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+main.main-content {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 50px;
+    border: 2px solid #e4d6c9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+#title_p {
+    font-weight: bolder;
+}
+
+.card p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+div.volume-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.volume-option:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+div.color-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+div.volume-details {
+    display: flex;
+    flex-direction: column;
+}
+
+div.volume-details p {
+    margin: 0;
+    font-size: 1em;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    align-items: center;
+    margin-right: 10px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+div.buttons button {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 10px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, var(--blue), var(--green), var(--yellow), var(--pink), var(--red));
+    background-size: 200%;
+    transition: background-position 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+div.buttons button:hover {
+    background: linear-gradient(45deg, var(--pink), var(--yellow));
+    transform: scale(1.05);
+}
+
+div.buttons button.disabled-btn {
+    background-color: var(--pink);
+    color: #fffefe;
+    cursor: not-allowed;
+}
+
+.main-sidebar {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 1em;
+    width: 70%;
+    margin: 10px auto;
+}
+
+.main-sidebar.visible {
+    max-height: 300px;
+    opacity: 1;
+    padding: 10px;
+    border: 2px solid;
+    border-image: linear-gradient(45deg, var(--purple), var(--blue), var(--green), var(--yellow), var(--pink), var(--red));
+    border-image-slice: 1;
+}
+
+.main-sidebar dt {
+    font-weight: bold;
+}
+
+.button-gradient {
+    justify-content: center;
+    align-items: center;
+    margin: 10px 35px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #e4d6c9;
+    border: 2px solid #e4d6c9;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-gradient:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    text-align: center;
+    background-color: var(--blue);
+    color: white;
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.sticker {
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    header {
+        font-size: 1em;
+    }
+    div.buttons button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    nav.main-nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
